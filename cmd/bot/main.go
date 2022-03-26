@@ -19,10 +19,14 @@ func main() {
 		log.Fatal(err)
 	}
 
+	log.Println("КОНФИГ:  ", cfg)
+
 	bot, err := tgbotapi.NewBotAPI(cfg.TelegramToken)
 	if err != nil {
 		log.Fatal(err)
 	}
+
+	//bot.Debug = true
 
 	pocketClient, err := pocket.NewClient(cfg.PocketConsumerKey)
 	if err != nil {

@@ -1,6 +1,9 @@
 package config
 
-import "github.com/spf13/viper"
+import (
+	"github.com/spf13/viper"
+	"log"
+)
 
 type Config struct {
 	TelegramToken     string
@@ -33,7 +36,10 @@ type Responses struct {
 // Парсим файл yml
 func Init() (*Config, error) {
 	viper.AddConfigPath("configs")
-	viper.SetConfigFile("main")
+	viper.AddConfigPath("/cmd/configs")
+	viper.AddConfigPath(".")
+	viper.SetConfigName("main")
+	viper.SetConfigType("yml")
 
 	if err := viper.ReadInConfig(); err != nil {
 		return nil, err
@@ -69,13 +75,14 @@ func ParseEnv(c *Config) error {
 		return err
 	}
 
-	if err := viper.BindEnv("auth_server_url"); err != nil {
+	if err := viper.BindEnv("auth_server_url", "AUTH_SERVER_URL"); err != nil {
 		return err
 	}
 
 	c.TelegramToken = viper.GetString("token")
 	c.PocketConsumerKey = viper.GetString("consumer_key")
-	c.TelegramBotURL = viper.GetString("auth_server_url")
+	c.AuthServerURL = viper.GetString("auth_server_url")
+	log.Println("c.TelegramBotURL :: ", c.TelegramBotURL)
 
 	return nil
 }
