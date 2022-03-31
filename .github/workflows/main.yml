@@ -60,9 +60,9 @@ jobs:
             
 #            docker rm $(docker stop $(docker ps -a -q --filter ancestor=${{ env.CONTAINER_NAME }} --format="{{.ID}}"))
             # Stop running container
-            docker stop $(echo $CONTAINER_NAME)
+            docker stop ${{ env.CONTAINER_NAME }}
             # Remove old container
-            docker rm $(echo $CONTAINER_NAME)    
+            docker rm ${{ env.CONTAINER_NAME }}  
                     
             # Set env variables
             export TOKEN=${{ secrets.TELEGRAM_TOKEN }}
