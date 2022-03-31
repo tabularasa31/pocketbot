@@ -9,7 +9,7 @@ import (
 
 const (
 	commandStart = "start"
-	commandAbout = "about"
+	//	commandAbout = "about"
 )
 
 // Обработка обычных сообщений
@@ -40,7 +40,7 @@ func (b *Bot) handleCommands(message *tgbotapi.Message) error {
 	switch message.Command() {
 	case commandStart:
 		return b.handleStartCommand(message)
-	case commandAbout:
+	case "about":
 		return b.handleAboutCommand(message)
 	default:
 		return b.handleUnknownCommand(message)

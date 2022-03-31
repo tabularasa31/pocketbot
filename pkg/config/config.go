@@ -2,7 +2,6 @@ package config
 
 import (
 	"github.com/spf13/viper"
-	"log"
 )
 
 type Config struct {
@@ -83,7 +82,6 @@ func ParseEnv(c *Config) error {
 	c.TelegramToken = viper.GetString("token")
 	c.PocketConsumerKey = viper.GetString("consumer_key")
 	c.AuthServerURL = viper.GetString("auth_server_url")
-	log.Println("c.TelegramBotURL :: ", c.TelegramBotURL)
 
 	return nil
 }
