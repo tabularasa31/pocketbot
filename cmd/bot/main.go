@@ -14,11 +14,13 @@ import (
 )
 
 func main() {
+	// Распарсим конфиг
 	cfg, err := config.Init()
 	if err != nil {
 		log.Fatal(err)
 	}
 
+	// Запускаем бота
 	bot, err := tgbotapi.NewBotAPI(cfg.TelegramToken)
 	if err != nil {
 		log.Fatal(err)

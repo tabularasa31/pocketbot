@@ -9,6 +9,7 @@ import (
 
 const (
 	commandStart = "start"
+	commandAbout = "about"
 )
 
 // Обработка обычных сообщений
@@ -39,6 +40,8 @@ func (b *Bot) handleCommands(message *tgbotapi.Message) error {
 	switch message.Command() {
 	case commandStart:
 		return b.handleStartCommand(message)
+	case commandAbout:
+		return b.handleAboutCommand(message)
 	default:
 		return b.handleUnknownCommand(message)
 	}
@@ -51,6 +54,12 @@ func (b *Bot) handleStartCommand(message *tgbotapi.Message) error {
 		return b.initAuthorizationProccess(message)
 	}
 	_, err = b.bot.Send(tgbotapi.NewMessage(message.Chat.ID, b.messages.AlreadyAuthorized))
+	return err
+}
+
+// Обработка команды About
+func (b *Bot) handleAboutCommand(message *tgbotapi.Message) error {
+	_, err := b.bot.Send(tgbotapi.NewMessage(message.Chat.ID, b.messages.About))
 	return err
 }
 
