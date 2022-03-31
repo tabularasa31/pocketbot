@@ -77,4 +77,4 @@ jobs:
             --restart always \
             --publish 80:80 \
             --name ${{ env.CONTAINER_NAME }} \
-            ${{ env.REGISTRY }}/tabularasa31/${{ env.IMAGE_NAME }}:${{ steps.meta.outputs.tags }}
+            ${{ env.REGISTRY }}/tabularasa31/${{ env.IMAGE_NAME }}:master
