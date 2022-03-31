@@ -62,13 +62,15 @@ func (b *Bot) handleStartCommand(message *tgbotapi.Message) error {
 
 // Обработка команды About
 func (b *Bot) handleAboutCommand(message *tgbotapi.Message) error {
-	_, err := b.bot.Send(tgbotapi.NewMessage(message.Chat.ID, b.messages.About))
+	msg := tgbotapi.NewMessage(message.Chat.ID, b.messages.About)
+	_, err := b.bot.Send(msg)
 	return err
 }
 
 // Обработка команды Help
 func (b *Bot) handleHelpCommand(message *tgbotapi.Message) error {
-	_, err := b.bot.Send(tgbotapi.NewMessage(message.Chat.ID, b.messages.Help))
+	msg := tgbotapi.NewMessage(message.Chat.ID, b.messages.Help)
+	_, err := b.bot.Send(msg)
 	return err
 }
 
