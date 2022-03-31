@@ -39,7 +39,7 @@ func Init() (*Config, error) {
 	viper.AddConfigPath("configs")
 	viper.AddConfigPath("/cmd/configs")
 	viper.AddConfigPath(".")
-	viper.SetConfigName("main")
+	viper.SetConfigName("config")
 	viper.SetConfigType("yml")
 
 	if err := viper.ReadInConfig(); err != nil {
