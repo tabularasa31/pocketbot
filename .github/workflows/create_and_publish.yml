@@ -11,7 +11,7 @@ on:
 
 env:
   REGISTRY: ghcr.io
-  IMAGE_NAME: "pocket-bot-image"
+  IMAGE_NAME: "pocketbotimage"
   CONTAINER_NAME: "pocketbot"
 
 jobs:
