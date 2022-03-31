@@ -63,7 +63,7 @@ jobs:
             whoami
             
             # Login into GitHub Registry
-            echo ${{ secrets.CR_PAT }} | docker login $(echo $REGISTRY) -u tabularasa31 --password-stdin
+            echo ${{ secrets.CR_PAT }} | docker login ${{ env.REGISTRY }} -u tabularasa31 --password-stdin
             
             # Stop running container
             docker stop ${{ env.CONTAINER_NAME }}
@@ -81,4 +81,4 @@ jobs:
             --restart always \
             --publish 80:80 \
             --name ${{ env.CONTAINER_NAME }} \
-            ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
+            ${{ env.IMAGE_NAME }}:latest
