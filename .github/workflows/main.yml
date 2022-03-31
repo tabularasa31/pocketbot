@@ -10,12 +10,6 @@ env:
   IMAGE_NAME: "pocket-bot"
   CONTAINER_NAME: "pocket"
 
-
-  RELEASE_PATH: /home/tabularasa31/pocketbot
-  PROD_REMOTE_HOST: ovz1.tabularasa31.pv29m.vps.myjino.ru
-  PROD_USER: tabularasa31
-  PROD_SERVER_SSH_KEY: ${{ secrets.PROD_SERVER_SSH_KEY }}
-
 jobs:
   build_and_push:
     runs-on: ubuntu-latest
@@ -32,12 +26,9 @@ jobs:
       - name: Push image to GitHub Container Registry
         run: docker push $(echo $REGISTRY)/$(echo $IMAGE_NAME):$(echo $GITHUB_SHA | head -c7)
 
-
-
   deploy:
     runs-on: ubuntu-latest
     needs: build_and_push
-
     steps:
       - name: Deploy to Jino via SSH action
         uses: appleboy/ssh-action@v0.1.3
