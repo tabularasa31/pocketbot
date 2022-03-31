@@ -6,6 +6,7 @@ messages:
   responses:
     start: "Hi! I'm Pocket Bot. I will help you to add items into your Pocket. Please tap the link to activate access to add items into your Pocket: \n\n%s "
     about: "I'm Pocket Bot. I will help you to add items into your Pocket. Just send me a link in message."
+    help: "This is HELP"
     already_authorized: "You are already authorized. Send me a link and I will save it into your Pocket "
     saved_successfully: "👌 Link saved"
     unknown_command: "Wrong command. Try again"
