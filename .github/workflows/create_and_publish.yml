@@ -63,7 +63,7 @@ jobs:
             whoami
             
             # Login into GitHub Registry
-            docker login $(echo $REGISTRY) -u tabularasa31 --password-stdin
+            echo ${{ secrets.CR_PAT }} | docker login $(echo $REGISTRY) -u tabularasa31 --password-stdin
             
             # Stop running container
             docker stop ${{ env.CONTAINER_NAME }}
