@@ -3,7 +3,7 @@
 # separate terms of service, privacy policy, and support
 # documentation.
 
-name: Create and publish a Docker image
+name: CI/CD
 
 on:
   push:
@@ -43,7 +43,8 @@ jobs:
         with:
           context: .
           push: true
-          tags: ${{ steps.meta.outputs.tags }}
+          tags: user/app:latest
+#          tags: ${{ steps.meta.outputs.tags }}
 
   deploy:
     runs-on: ubuntu-latest
@@ -75,4 +76,4 @@ jobs:
             --restart always \
             --publish 80:80 \
             --name ${{ env.CONTAINER_NAME }} \
-            ${{ env.REGISTRY }}/tabularasa31/${{ env.IMAGE_NAME }}:master
+            ${{ env.REGISTRY }}/tabularasa31/${{ env.IMAGE_NAME }}:latest
