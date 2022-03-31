@@ -31,7 +31,6 @@ func (s *AuthorizationServer) Start() error {
 
 // Обработчик HTTP запросов
 func (s *AuthorizationServer) ServeHTTP(w http.ResponseWriter, r *http.Request) {
-	log.Println("Авторизация сервера ServeHTTP")
 	//Если метод не GET, то выходим из обработчика
 	if r.Method != http.MethodGet {
 		log.Println("Method not GET")
@@ -59,16 +58,13 @@ func (s *AuthorizationServer) ServeHTTP(w http.ResponseWriter, r *http.Request) 
 		w.WriteHeader(http.StatusUnauthorized)
 		return
 	}
-	log.Println("получаем requestToken:  ", requestToken)
 
 	// Получаем аксесс токен
 	authResp, err := s.pocketClient.Authorize(r.Context(), requestToken)
 	if err != nil {
 		w.WriteHeader(http.StatusInternalServerError)
-		log.Println("получаем аксесс токен:  че то не получилось", authResp)
 		return
 	}
-	log.Println("получаем аксесс токен:  ", authResp)
 
 	// Записываем аксесс токен в нашу бд
 	err = s.tokenRepository.Save(chatID, authResp.AccessToken, repository.AccessTokens)
@@ -80,7 +76,5 @@ func (s *AuthorizationServer) ServeHTTP(w http.ResponseWriter, r *http.Request) 
 	// Отдаем http запрос, в header которого добавлена инфа о нашей редирект ссылке
 	w.Header().Add("Location", s.redirectURL)
 	w.WriteHeader(http.StatusMovedPermanently)
-
-	log.Println("Авторизация сервера закончилась")
 
 }

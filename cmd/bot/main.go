@@ -19,8 +19,6 @@ func main() {
 		log.Fatal(err)
 	}
 
-	log.Println("КОНФИГ:  ", cfg)
-
 	bot, err := tgbotapi.NewBotAPI(cfg.TelegramToken)
 	if err != nil {
 		log.Fatal(err)
