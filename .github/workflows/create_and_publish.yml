@@ -65,11 +65,7 @@ jobs:
             # Login into GitHub Registry
             echo ${{ secrets.CR_PAT }} | docker login ${{ env.REGISTRY }} -u tabularasa31 --password-stdin
             
-            # Stop running container
-            docker stop ${{ env.CONTAINER_NAME }}
-            
-            # Remove old container
-            docker rm ${{ env.CONTAINER_NAME }}
+            docker rm $(docker stop $(docker ps -a -q --filter ancestor=${{ env.REGISTRY }}/tabularasa31/${{ env.IMAGE_NAME }} --format="{{.ID}}"))
             
             # Set env variables
             export TOKEN=${{ secrets.TELEGRAM_TOKEN }}
@@ -81,4 +77,4 @@ jobs:
             --restart always \
             --publish 80:80 \
             --name ${{ env.CONTAINER_NAME }} \
-            ${{ env.IMAGE_NAME }}
+            ${{ env.REGISTRY }}/tabularasa31/${{ env.IMAGE_NAME }}
