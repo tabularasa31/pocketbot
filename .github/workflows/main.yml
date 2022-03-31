@@ -36,7 +36,7 @@ jobs:
 #        run: echo ${{ secrets.CR_PAT }} | docker login $(echo $REGISTRY) -u tabularasa31 --password-stdin
 
       - name: Push image to GitHub Container Registry
-        run: docker push ghcr.io/tabularasa31/pocketbot:latest
+        run: docker push ghcr.io/tabularasa31/pocketbot
 
   deploy:
     runs-on: ubuntu-latest
