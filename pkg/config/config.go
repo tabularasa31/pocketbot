@@ -34,7 +34,7 @@ type Responses struct {
 	UnknounnCommand   string `mapstructure:"unknown_command"`
 }
 
-// Парсим файл yml
+// Init Парсим файл yml
 func Init() (*Config, error) {
 	viper.AddConfigPath("configs")
 	viper.AddConfigPath("/cmd/configs")
@@ -66,7 +66,7 @@ func Init() (*Config, error) {
 	return &c, nil
 }
 
-// Парсим переменные окружения
+// ParseEnv Парсим переменные окружения
 func ParseEnv(c *Config) error {
 	if err := viper.BindEnv("token"); err != nil {
 		return err

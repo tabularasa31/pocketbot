@@ -3,7 +3,6 @@ package server
 import (
 	"PocketBot/pkg/repository"
 	"github.com/zhashkevych/go-pocket-sdk"
-	"log"
 	"net/http"
 	"strconv"
 )
@@ -24,7 +23,6 @@ func (s *AuthorizationServer) Start() error {
 		Addr:    ":80",
 		Handler: s,
 	}
-	log.Println("Авторизация сервера START")
 
 	return s.server.ListenAndServe()
 }
@@ -33,7 +31,6 @@ func (s *AuthorizationServer) Start() error {
 func (s *AuthorizationServer) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	//Если метод не GET, то выходим из обработчика
 	if r.Method != http.MethodGet {
-		log.Println("Method not GET")
 		w.WriteHeader(http.StatusMethodNotAllowed)
 		return
 	}
