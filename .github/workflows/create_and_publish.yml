@@ -43,8 +43,7 @@ jobs:
         with:
           context: .
           push: true
-          tags: ${{ steps.meta.outputs.tags }}
-          labels: ${{ steps.meta.outputs.labels }}
+          tags: ${{ github.sha }}
           
 
   deploy:
@@ -77,4 +76,4 @@ jobs:
             --restart always \
             --publish 80:80 \
             --name ${{ env.CONTAINER_NAME }} \
-            ${{ env.REGISTRY }}/tabularasa31/${{ env.IMAGE_NAME }}
+            ${{ env.REGISTRY }}/tabularasa31/${{ env.IMAGE_NAME }}:${{ github.sha }}
