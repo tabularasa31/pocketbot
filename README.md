@@ -15,13 +15,13 @@ Stack:
 ## Quick start
 
 1. Clone the repo to your computer
-2. Create .env file in the root - it defines all enviroment variables which PocketBot needs. You can find an example at .env.example
+2. Create `.env` file in the root - it defines all enviroment variables which PocketBot needs. You can find an example at `.env.example`
 3. Run `make up` to build and sturt a docker container
 
 
 ## Requirements
 
-- Golang > 1.13
+- Golang > 1.17
 - Docker
 - Make
 - Telegram bot - create bot via BotFather
