@@ -21,13 +21,11 @@ Stack:
 
 ## Requirements
 
-Golang > 1.13
-Docker
-Make
-Telegram bot
+- Golang > 1.13
+- Docker
+- Make
+- Telegram bot
 
 ## TODO
-- [] Add unit tests
 - [X] Add CI\CD
-- [] Add supporting many projects at the same time
-- [] Add Web UI for configurating
+- [ ] Add unit tests
