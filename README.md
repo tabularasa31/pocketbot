@@ -24,7 +24,8 @@ Stack:
 - Golang > 1.13
 - Docker
 - Make
-- Telegram bot
+- Telegram bot - create bot via BotFather
+- Pocket app - create app https://getpocket.com/developer/apps/new
 
 ## TODO
 - [X] Add CI\CD
