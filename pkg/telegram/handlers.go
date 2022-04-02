@@ -52,9 +52,9 @@ func (b *Bot) handleCommands(message *tgbotapi.Message) error {
 
 // Обработка команды Start
 func (b *Bot) handleStartCommand(message *tgbotapi.Message) error {
+	defer b.bot.Send(tgbotapi.NewMessage(message.Chat.ID, "УСПЕШНО"))
 	_, err := b.getAccessToken(message.Chat.ID)
 	if err != nil {
-		b.bot.Send(tgbotapi.NewMessage(message.Chat.ID, "УСПЕШНО"))
 		return b.initAuthorizationProccess(message)
 	}
 	_, err = b.bot.Send(tgbotapi.NewMessage(message.Chat.ID, b.messages.AlreadyAuthorized))
