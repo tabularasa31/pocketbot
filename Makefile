@@ -8,7 +8,12 @@ run: build
 	./.bin/bot
 
 build-image:
-	docker build -t pocket_bot:v0.1 .
+	docker build -t pocketbot:0.1 .
 
 start-container:
-	docker run --name my_pocket_bot -p 80:80 --env-file .env pocket_bot:v0.1
+	docker run --name pocketbot -p 80:80 --env-file .env pocketbot:0.1
+
+up: build-image start-container
+
+down:
+	docker stop pocketbot
