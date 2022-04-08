@@ -16,7 +16,7 @@ Stack:
 
 1. Clone the repo to your computer
 2. Create `.env` file in the root - it defines all enviroment variables which PocketBot needs. You can find an example at `.env.example`
-3. Run `make up` to build and sturt a docker container
+3. Run `make up` to build and start a docker container
 
 
 ## Requirements
